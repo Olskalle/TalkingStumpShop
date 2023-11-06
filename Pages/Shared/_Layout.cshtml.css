@@ -1,48 +1,155 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
+body {
+    background-color: #86e5b2;
+}
+
+.navbar {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important; 
+}
 
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
 a {
-  color: #0077cc;
+    color: #379683;
+    text-decoration: none;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #05386b !important;
+    border-color: #05386b;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
 button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    font-size: 1rem;
+    line-height: inherit;
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+}
+
+.navbar-toggler {
+    background-color: #05386b!important;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(237, 245, 225)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+/*-----------------------------------------*/
+.container {
+    margin-left:unset;
+}
+
+.header {
+    background-color: #4cdd99;
+}
+
+.header-icon {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    padding-left:10px;
+}
+
+    .header-icon .brand-icon {
+        height: 4rem;
+        filter: invert(11%) sepia(85%) saturate(2829%) hue-rotate(199deg) brightness(97%) contrast(96%);
+    }
+    .header-icon .brand-name {
+        height: 2rem;
+    }
+
+.wrapper {
+    width: 100%;
+    background-color: #86e5b2;
+    display: flex;
+    /*justify-content: space-between;*/
+}
+
+.left-sidebar {
+    background-color: #379683;
+    box-sizing: border-box;
+    width: 164px;
+    flex-shrink: 0;
+    z-index: 1000;
+    box-shadow: 0 0 0 black;
+    transform: translateZ(0);
+}
+
+@media (max-width: 576px) {
+    .left-sidebar {
+        display: none;
+    }
+    .header-icon .brand-name {
+        display:none;
+    }
+}
+
+@media (min-width: 576px) {
+    .nav-item {
+        display: none;
+    }
+}
+
+
+.left-sidebar-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    width: auto;
+    margin-bottom: 8px;
+    margin-top: 16px;
+    overflow-y: auto;
+    top: 10px;
+    max-height: саlс(100vh - 56px);
+}
+
+    .left-sidebar-sticky a {
+        background-color: #05386b !important;
+        margin: 3px 12px 3px 8px !important;
+        color: #FFFFFF !important;
+        width: auto;
+        padding: 10px 16px;
+        text-align: center;
+    }
+
+        .left-sidebar-sticky a:hover {
+            background-color: #234668;
+            text-shadow: 0 0 10px #dff6ff;
+        }
+
+.footer {
+    background-color: #05386b !important;
+}
+.footer-text {
+    color: #FFFFFF !important;
 }

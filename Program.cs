@@ -1,3 +1,5 @@
+using TalkingStumpShop.Services;
+
 namespace TalkingStumpShop
 {
 	public class Program
@@ -8,6 +10,10 @@ namespace TalkingStumpShop
 
 			// Add services to the container.
 			builder.Services.AddRazorPages();
+			builder.Services.AddDbContext<WebsiteContext>();
+			builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+			builder.Services.AddScoped<INewsService, NewsService>();
+			builder.Services.AddScoped<IProductsService, ProductsService>();
 
 			var app = builder.Build();
 

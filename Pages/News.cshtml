@@ -1,0 +1,44 @@
+﻿@page
+@model TalkingStumpShop.Pages.NewsModel
+@{
+    <div class="container py-5">
+        <div class="row justify-content-center mb-3">
+            <div class="col-md-12 col-xl-12">
+                <h2>Новости</h2>
+                @foreach (var article in Model.Articles)
+                {
+                    <div class="row justify-content-center mb-3">
+                        <div class="col-md-12 col-xl-12">
+                            <div class="card shadow-0 border rounded-3">
+                                <div class="card-body">
+                                    <div class="news-header rounded mb-3">
+                                        <h3 class="h5">@article.Title</h3>
+                                        <div class="news-date">@article.CreationDate.ToString("dd.MM.yyyy")</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+                                            <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                                                <img src="news/@article.ImageFileName"
+                                                     class="w-100 rounded" />
+                                                <a href="#!">
+                                                    <div class="hover-overlay">
+                                                        <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-lg-9 col-xl-6">
+                                            <p class="text-wrap mb-4 mb-md-0 description descr-large">
+                                                @article.Content
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
