@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using TalkingStumpShop.Models;
+using TalkingStumpShop.Services;
 
 namespace TalkingStumpShop.Pages
 {

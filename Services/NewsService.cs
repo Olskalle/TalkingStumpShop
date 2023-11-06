@@ -14,38 +14,34 @@ namespace TalkingStumpShop.Services
             _logger = logger;
         }
 
-        public Task CreateAsync(NewsArticle article, CancellationToken cancellationToken)
+        public async Task CreateAsync(NewsArticle article, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            cancellationToken.ThrowIfCancellationRequested();
+            await _repository.AddAsync(article, cancellationToken);
         }
 
-        public Task DeleteAsync(NewsArticle article, CancellationToken cancellationToken)
+        public async Task DeleteAsync(NewsArticle article, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            cancellationToken.ThrowIfCancellationRequested();
+            await _repository.DeleteAsync(article, cancellationToken);
         }
 
         public async Task<IQueryable<NewsArticle>> GetAsync(CancellationToken cancellationToken)
         {
+            cancellationToken.ThrowIfCancellationRequested();
             return await _repository.GetAsync(cancellationToken);
         }
 
-        public Task<IQueryable<NewsArticle>> GetAsync(Expression<Func<NewsArticle, bool>> predicate, CancellationToken cancellationToken)
+        public async Task<IQueryable<NewsArticle>> GetAsync(Expression<Func<NewsArticle, bool>> predicate, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            cancellationToken.ThrowIfCancellationRequested();
+            return await _repository.GetAsync(predicate, cancellationToken);
         }
 
-        public Task UpdateAsync(NewsArticle article, CancellationToken cancellationToken)
+        public async Task UpdateAsync(NewsArticle article, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            cancellationToken.ThrowIfCancellationRequested();
+            await _repository.UpdateAsync(article, cancellationToken);
         }
-    }
-
-    public interface INewsService
-    {
-        Task CreateAsync(NewsArticle article, CancellationToken cancellationToken);
-        Task<IQueryable<NewsArticle>> GetAsync(CancellationToken cancellationToken);
-        Task<IQueryable<NewsArticle>> GetAsync(Expression<Func<NewsArticle, bool>> predicate, CancellationToken cancellationToken);
-        Task UpdateAsync(NewsArticle article, CancellationToken cancellationToken);
-        Task DeleteAsync(NewsArticle article, CancellationToken cancellationToken);
     }
 }

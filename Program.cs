@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using TalkingStumpShop.Authentication;
 using TalkingStumpShop.Services;
 
 namespace TalkingStumpShop
 {
-	public class Program
+    public class Program
 	{
 		public static void Main(string[] args)
 		{
@@ -11,11 +13,18 @@ namespace TalkingStumpShop
 			// Add services to the container.
 			builder.Services.AddRazorPages();
 			builder.Services.AddDbContext<WebsiteContext>();
+			builder.Services.AddDbContext<AuthenticationContext>();
 			builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 			builder.Services.AddScoped<INewsService, NewsService>();
 			builder.Services.AddScoped<IProductsService, ProductsService>();
 
-			var app = builder.Build();
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+			.AddCookie(options => //CookieAuthenticationOptions
+			{
+				options.LoginPath = new PathString("/Login");
+			});
+
+            var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
 			if (!app.Environment.IsDevelopment())
@@ -30,6 +39,7 @@ namespace TalkingStumpShop
 
 			app.UseRouting();
 
+			app.UseAuthentication();
 			app.UseAuthorization();
 
 			app.MapRazorPages();
