@@ -29,13 +29,15 @@ namespace TalkingStumpShop.Services
         public async Task<IQueryable<NewsArticle>> GetAsync(CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
-            return await _repository.GetAsync(cancellationToken);
+            var result = await _repository.GetAsync(cancellationToken);
+            return result.OrderBy(x => x.CreationDate);
         }
 
         public async Task<IQueryable<NewsArticle>> GetAsync(Expression<Func<NewsArticle, bool>> predicate, CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
-            return await _repository.GetAsync(predicate, cancellationToken);
+            var result = await _repository.GetAsync(predicate, cancellationToken);
+            return result.OrderBy(x => x.CreationDate);
         }
 
         public async Task UpdateAsync(NewsArticle article, CancellationToken cancellationToken)

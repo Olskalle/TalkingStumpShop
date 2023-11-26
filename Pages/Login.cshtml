@@ -2,28 +2,29 @@
 @model TalkingStumpShop.Pages.LoginModel
 @{
     <div class="content" id="content">
-    <div class="container py-5">
-        <div class="row justify-content-center mb-3">
-            <div class="col-md-12 col-xl-12">
-                <div class="row justify-content-center mb-3">
-                    <div class="col-md-6 col-xl-6 mt-5">
-                        <div class="card shadow-0 border rounded-3">
-                            <div class="card-body">
-                                <div class="tab-content">
-                                    <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-                                        <form method="post">
-                                            <div class="form-outline mb-4">
-                                                <input type="text" id="loginName" class="form-control" asp-for="Credentials.Login"/>
-                                                <label class="form-label">Логин</label>
-                                            </div>
-                                            <span class="text-danger" asp-validation-for="Credentials.Login"></span>
-                                            <div class="form-outline mb-4">
-                                                <input type="password" id="loginPassword" class="form-control" asp-for="Credentials.Password"/>
-                                                <label class="form-label">Пароль</label>
-                                            </div>
-                                            <span class="text-danger" asp-validation-for="Credentials.Password"></span>
-                                            <button type="submit" class="btn btn-primary btn-block mb-4 col-12">Вход</button>
-                                        </form>
+        <div class="container py-5">
+            <div class="row justify-content-center mb-3">
+                <div class="col-md-12 col-xl-12">
+                    <div class="row justify-content-center mb-3">
+                        <div class="col-md-6 col-xl-6 mt-5">
+                            <div class="card shadow-0 border rounded-3">
+                                <div class="card-body">
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+                                            <form method="post">
+                                                <div class="form-outline mb-4">
+                                                    <input type="text" id="loginName" class="form-control" asp-for="Credentials.Login" />
+                                                    <label class="form-label">Логин</label>
+                                                </div>
+                                                <span class="text-danger" asp-validation-for="Credentials.Login"></span>
+                                                <div class="form-outline mb-4">
+                                                    <input type="password" id="loginPassword" class="form-control" asp-for="Credentials.Password" />
+                                                    <label class="form-label">Пароль</label>
+                                                </div>
+                                                <span class="text-danger" asp-validation-for="Credentials.Login"></span>
+                                                <button type="submit" class="btn btn-primary btn-block mb-4 col-12">Вход</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -31,7 +32,6 @@
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </div>
 }

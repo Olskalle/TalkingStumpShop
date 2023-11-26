@@ -15,7 +15,8 @@ namespace TalkingStumpShop
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseInMemoryDatabase("InMemory");
+            //optionsBuilder.UseInMemoryDatabase("InMemory");
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=TalkingStumpShop;Username=postgres;Password=admin");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -36,7 +37,7 @@ namespace TalkingStumpShop
                                   "дерева и эпоксидной смолы. Наши мастера вложили всю свою страсть и талант в каждый деталь, чтобы создать " +
                                   "функциональные и впечатляющие предметы мебели, которые украсят ваш интерьер. Погрузитесь в мир природной " +
                                   "красоты и изысканного дизайна с новой коллекцией столов 'Говорящий Пень'.",
-                        CreationDate = DateTime.Parse("2023-10-12"),
+                        CreationDate = DateTime.UtcNow,
                         ImageFileName = "tables-collection.png"
                     },
                     new NewsArticle()
@@ -47,7 +48,7 @@ namespace TalkingStumpShop
                                   "ручной работы. Каждое изделие создано с заботой и вниманием к деталям нашими опытными мастерами. Вы " +
                                   "найдете у нас подарки для всех случаев: от деревянных часов до восхитительных ваз и деревянных фигурок. " +
                                   "Подарите вашим близким что-то особенное и уникальное в этот праздничный сезон!",
-                        CreationDate = DateTime.Parse("2023-09-25"),
+                        CreationDate = DateTime.UtcNow,
                         ImageFileName = "figure-collection.png"
                     },
                     new NewsArticle()
@@ -59,7 +60,7 @@ namespace TalkingStumpShop
                                   "руководством опытных мастеров. Эти мастер-классы предоставят вам уникальную возможность погрузиться в " +
                                   "мир деревянного искусства и научиться создавать собственные шедевры. Следите за нашими объявлениями для " +
                                   "получения дополнительной информации о датах и регистрации!",
-                        CreationDate = DateTime.Parse("2023-09-12"),
+                        CreationDate = DateTime.UtcNow,
                         ImageFileName = "master-class.png"
                     }
                 );
