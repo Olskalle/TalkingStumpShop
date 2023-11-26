@@ -20,4 +20,9 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.11" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Admin\Pages\" />
+    <Folder Include="Admin\Shared\" />
+  </ItemGroup>
+
 </Project>

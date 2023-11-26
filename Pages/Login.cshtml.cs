@@ -20,7 +20,7 @@ namespace TalkingStumpShop.Pages
             _context.Users.Add(new User
             {
                 Login = "admin",
-                Password = "123345"
+                Password = "12345"
             });
             _context.SaveChanges();
         }
@@ -42,7 +42,7 @@ namespace TalkingStumpShop.Pages
             {
                 await Authenticate(Credentials.Login); // аутентификация
 
-                return RedirectToPage("/Index");
+                return RedirectToPage("/AdminProducts");
             }
             ModelState.AddModelError("", "Некорректные логин и(или) пароль");
             return Page();

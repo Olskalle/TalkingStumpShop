@@ -1,0 +1,52 @@
+﻿@page 
+@model TalkingStumpShop.Pages.AdminProductEditModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Товар";
+}
+<div class="content" id="content">
+    <div class="container py-5">
+        <div class="row justify-content-center mb-3">
+            <div class="col-md-12 col-xl-12">
+                <div class="row justify-content-center mb-3">
+                    <div class="col-md-6 col-xl-6 mt-5">
+                        <div class="card shadow-0 border rounded-3">
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+                                        <form method="post" enctype="multipart/form-data">
+                                            <!--Product name-->
+                                            <div class="form-outline mb-4">
+                                                <label class="form-label">Название</label>
+                                                <input type="text" id="productName" class="form-control" asp-for="Product.Name" />
+                                            </div>
+                                            <span class="text-danger" asp-validation-for="Product.Name"></span>
+                                            <!--Product description-->
+                                            <div class="form-outline mb-4">
+                                                <label class="form-label">Описание</label>
+                                                <textarea rows="10" id="productDescription" class="form-control" asp-for="Product.Description" style="resize: none;">
+                                                    @Model.Product.Description
+                                                </textarea>
+                                            </div>
+                                            <span class="text-danger" asp-validation-for="Product.Description"></span>
+                                            <!--Product price-->
+                                            <div class="form-outline mb-4">
+                                                <label class="form-label">Цена</label>
+                                                <input step="0.01" type="number" id="productPrice" class="form-control" asp-for="Product.Price" />
+                                            </div>
+
+                                            <div class="form-outline mb-4">
+                                                <input type="file" asp-for="Image" />
+                                            </div>
+                                            <button type="submit" class="btn btn-success btn-block mb-4 col-12">Ок</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
