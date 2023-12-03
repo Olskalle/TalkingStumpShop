@@ -14,10 +14,12 @@
         <nav class="navbar navbar-expand-sm navbar-light navbar-toggleable-sm border-bottom box-shadow header">
             <div class="container">
                 <div class="navbar-brand" asp-area="" asp-page="/Index">
-                    <div class="header-icon">
-                        <img class="brand-icon" src="src/header_icon.svg" alt="icon">
-                        <img class="brand-name" src="src/name.svg" alt="icon">
-                    </div>
+                    <a href="Index">
+                        <div class="header-icon">
+                            <img class="brand-icon" src="src/header_icon.svg" alt="icon">
+                            <img class="brand-name" src="src/name.svg" alt="icon">
+                        </div>
+                    </a>
                 </div>
                 <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -26,10 +28,13 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Admin/Products">Товары</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/AdminProducts">Товары</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Admin/Products">Новости</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/AdminNews">Новости</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/AdminPasswordChange">Смена пароля</a>
                         </li>
                     </ul>
                 </div>
@@ -39,8 +44,9 @@
     <div class="wrapper">
         <div class="left-sidebar rounded">
             <div class="left-sidebar-sticky d-flex flex-column mt-4">
-                <a class="btn btn-primary btn-sm" href="Products">Товары</a>
-                <a class="btn btn-primary btn-sm" href="News">Новости</a>
+                <a class="btn btn-primary btn-sm" href="AdminProducts">Товары</a>
+                <a class="btn btn-primary btn-sm" href="AdminNews">Новости</a>
+                <a class="btn btn-primary btn-sm" href="AdminPasswordChange">Смена пароля</a>
             </div>
         </div>
 

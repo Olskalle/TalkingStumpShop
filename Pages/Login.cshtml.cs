@@ -30,6 +30,11 @@ namespace TalkingStumpShop.Pages
 
         public IActionResult OnGet()
         {
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                RedirectToPage("/AdminProducts");
+            }
+
             return Page();
         }
 

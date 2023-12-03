@@ -8,21 +8,43 @@
 <div class="content" id="content">
     <div class="container py-5">
         @*New product card*@
-        <form method="post" asp-page-handler="New">
-            <div class="row justify-content-center mb-3">
-                <div class="col-md-12 col-xl-12">
-                    <div class="card shadow-0 border rounded-3">
-                        <div class="card-body">
+        <div class="row justify-content-center mb-3">
+            <div class="col-md-12 col-xl-12">
+                <div class="card shadow-0 border rounded-3">
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data" asp-page-handler="New">
+                            <!--Product name-->
+                            <div class="form-outline mb-2">
+                                <label class="form-label">Название</label>
+                                <input autocomplete="off" type="text" id="productName" class="form-control" asp-for="NewProduct.Name" />
+                            </div>
+                            <span class="text-danger" asp-validation-for="NewProduct.Name"></span>
+                            <!--Product description-->
+                            <div class="form-outline mb-2">
+                                <label class="form-label">Описание</label>
+                                <textarea rows="10" id="productDescription" class="form-control" asp-for="NewProduct.Description" style="resize: none;">
+                                    NewProduct.Description
+                                    </textarea>
+                            </div>
+                            <span class="text-danger" asp-validation-for="NewProduct.Description"></span>
+                            <!--Product price-->
+                            <div class="form-outline mb-2">
+                                <label class="form-label">Цена</label>
+                                <input autocomplete="off" step="0.01" type="number" id="productPrice" class="form-control" asp-for="Price" />
+                            </div>
+                            <div class="form-outline mb-4">
+                                <input type="file" name="image" />
+                            </div>
                             <div class="row">
-                                <div class="d-flex flex-column mt-4">
+                                <div class="d-flex flex-column mt-2">
                                     <button class=" btn btn-success btn-sm" type="submit">Добавить</button>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
         @foreach (var product in Model.Products)
         {
             <div class="row justify-content-center mb-3">
@@ -43,7 +65,7 @@
                                     <label class="form-label">Описание</label>
                                     <textarea rows="10" id="productDescription" class="form-control" asp-for="@product.Description" style="resize: none;">
                                         @product.Description
-                                    </textarea>
+                                        </textarea>
                                 </div>
                                 <span class="text-danger" asp-validation-for="@product.Description"></span>
                                 <!--Product price-->
@@ -56,7 +78,7 @@
                                     <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
                                         <div class="bg-image hover-zoom ripple rounded ripple-surface">
                                             <img src="catalog/@product.ImageFileName"
-                                            class="w-100 rounded" />
+                                                 class="w-100 rounded" />
                                             <a href="#!">
                                                 <div class="hover-overlay">
                                                     <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
@@ -66,9 +88,21 @@
                                     </div>
                                 }
                                 <div class="form-outline mb-4">
-                                    <input type="file" name="image"/>
+                                    <input type="file" name="image" />
                                 </div>
-                                <button type="submit" class="btn btn-success btn-block mb-4 col-12">Ок</button>
+                                <div class="row">
+                                    <div class="d-flex flex-row mt-2">
+                                        <div class="d-flex flex-row p-1 col-9">
+                                            <button type="submit" class="btn btn-success btn-block btn-sm w-100">Ок</button>
+                                        </div>
+                                        <div class="d-flex flex-row p-1 col-3">
+                                            <button asp-page-handler="Delete" asp-route-productId="@product.Id" class="btn btn-danger btn-block btn-sm w-100" type="submit"
+                                                    onclick="return confirm('Вы действительно хотите выполнить удаление?')">
+                                                Удалить
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -77,10 +111,3 @@
         }
     </div>
 </div>
-<script>
-    function redirectToEditPage(productId) {
-        // Redirect to the edit page URL with the product ID
-        window.open(`/AdminProductEdit/${productId}`, '_blank')
-        //window.location.href = `Admin/ProductEdit/${productId}`;
-    }
-</script>

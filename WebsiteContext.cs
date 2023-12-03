@@ -15,8 +15,8 @@ namespace TalkingStumpShop
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseInMemoryDatabase("InMemory");
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=TalkingStumpShop;Username=postgres;Password=admin");
+            optionsBuilder.UseInMemoryDatabase("InMemory");
+            //optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=TalkingStumpShop;Username=postgres;Password=admin");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

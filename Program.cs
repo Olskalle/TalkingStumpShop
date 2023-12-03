@@ -22,6 +22,8 @@ namespace TalkingStumpShop
 			.AddCookie(options => //CookieAuthenticationOptions
 			{
 				options.LoginPath = new PathString("/Login");
+				options.Cookie.Name = "stump_cookie";
+				options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
 			});
 
             var app = builder.Build();

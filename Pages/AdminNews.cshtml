@@ -1,0 +1,105 @@
+﻿@page
+@model TalkingStumpShop.Pages.AdminNewsModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Новости";
+}
+<div class="content" id="content">
+    <div class="container py-5">
+        @*New product card*@
+        <div class="row justify-content-center mb-3">
+            <div class="col-md-12 col-xl-12">
+                <div class="card shadow-0 border rounded-3">
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data" asp-page-handler="New">
+                            <!--Article title-->
+                            <div class="form-outline mb-2">
+                                <label class="form-label">Название</label>
+                                <input autocomplete="off" type="text" id="articleTitle" class="form-control" asp-for="NewArticle.Title" />
+                            </div>
+                            <span class="text-danger" asp-validation-for="NewArticle.Title"></span>
+                            <!--Article content-->
+                            <div class="form-outline mb-2">
+                                <label class="form-label">Описание</label>
+                                <textarea rows="10" id="articleContent" class="form-control" asp-for="NewArticle.Content" style="resize: none;">
+                                    NewArticle.Content
+                                    </textarea>
+                            </div>
+                            <span class="text-danger" asp-validation-for="NewArticle.Content"></span>
+                            <div class="form-outline mb-4">
+                                <input type="file" name="image" />
+                            </div>
+                            <div class="row">
+                                <div class="d-flex flex-column mt-2">
+                                    <button class=" btn btn-success btn-sm" type="submit">Добавить</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @foreach (var article in Model.NewsArticles)
+        {
+            <div class="row justify-content-center mb-3">
+                <div class="col-md-12 col-xl-12">
+                    <div class="card shadow-0 border rounded-3">
+                        <div class="card-body">
+                            <form method="post" enctype="multipart/form-data" asp-page-handler="Edit" asp-route-articleId="@article.Id">
+                                <!--Article ID-->
+                                <input type="hidden" asp-for="@article.Id" />
+                                <!--Article creationDate-->
+                                <input type="hidden" asp-for="@article.CreationDate" />
+                                <!--Article title-->
+                                <div class="form-outline mb-2">
+                                    <label class="form-label">Название</label>
+                                    <input autocomplete="off" type="text" id="productName" class="form-control" asp-for="@article.Title" />
+                                </div>
+                                <span class="text-danger" asp-validation-for="@article.Title"></span>
+                                <!--Article content-->
+                                <div class="form-outline mb-2">
+                                    <label class="form-label">Описание</label>
+                                    <textarea rows="10" id="productDescription" class="form-control" asp-for="@article.Content" style="resize: none;">
+                                        @article.Content
+                                            </textarea>
+                                </div>
+
+                                <span class="text-danger" asp-validation-for="@article.Content"></span>
+                                @if (article.ImageFileName is not null && article.ImageFileName != "")
+                                {
+                                    <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+                                        <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                                            <img src="news/@article.ImageFileName"
+                                                 class="w-100 rounded" />
+                                            <a href="#!">
+                                                <div class="hover-overlay">
+                                                    <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                }
+                                <div class="form-outline mb-4">
+                                    <input type="file" name="image" />
+                                </div>
+                                <div class="row">
+                                    <div class="d-flex flex-row mt-2">
+                                        <div class="d-flex flex-row p-1 col-9">
+                                            <button type="submit" class="btn btn-success btn-block btn-sm w-100">Ок</button>
+                                        </div>
+                                        <div class="d-flex flex-row p-1 col-3">
+                                            <button asp-page-handler="Delete" asp-route-articleId="@article.Id" class="btn btn-danger btn-block btn-sm w-100" type="submit"
+                                                    onclick="return confirm('Вы действительно хотите выполнить удаление?')">
+                                                Удалить
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
